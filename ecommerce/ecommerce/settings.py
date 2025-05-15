@@ -3,6 +3,9 @@ import os
 
 from pathlib import Path
 
+from decouple import config, Csv
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,9 +18,10 @@ SECRET_KEY = 'django-insecure-olc_l4v9uimldmd)xjf0qcgbl#f3zyln(b##@b26_&2q_oo@_d
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+#DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
 
-ALLOWED_HOSTS = ['https://alonsotrejo1970.pythonanywhere.com/']  # Reemplaza con tu dominio de PythonAnywhere
 
 
 #CSRF_TRUSTED_ORIGINS = ['']
